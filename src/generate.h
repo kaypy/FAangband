@@ -175,6 +175,7 @@ struct room_profile {
  * Tree type chances 
  */
 #define HIGHLAND_TREE_CHANCE 30
+#define FOREST_DENSITY 3
 
 /**
  * Height and width for the currently generated level

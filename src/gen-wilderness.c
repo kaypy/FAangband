@@ -1545,11 +1545,13 @@ extern void forest_gen(void)
 	for (x = 0; x < DUNGEON_WID; x++) {
 	    /* Create trees */
 	    if (cave_feat[y][x] == FEAT_GRASS) {
-		if (randint1(p_ptr->depth + HIGHLAND_TREE_CHANCE)
-		    > HIGHLAND_TREE_CHANCE)
-		    cave_set_feat(y, x, FEAT_TREE2);
-		else
-		    cave_set_feat(y, x, FEAT_TREE);
+			if (randint0(FOREST_DENSITY)) {
+			if (randint1(p_ptr->depth + HIGHLAND_TREE_CHANCE)
+			    > HIGHLAND_TREE_CHANCE)
+			    cave_set_feat(y, x, FEAT_TREE2);
+			else
+			    cave_set_feat(y, x, FEAT_TREE);
+			}
 	    } else
 		/* Hack - prepare for clearings */
 		cave_on(cave_info[y][x], CAVE_ICKY);
@@ -2549,12 +2551,19 @@ extern void valley_gen(void)
     /* Hack -- Start with trees */
     for (y = 0; y < DUNGEON_HGT; y++) {
 	for (x = 0; x < DUNGEON_WID; x++) {
-	    /* Create trees */
-	    if (randint1(p_ptr->depth + HIGHLAND_TREE_CHANCE)
-		> HIGHLAND_TREE_CHANCE)
-		cave_set_feat(y, x, FEAT_TREE2);
-	    else
-		cave_set_feat(y, x, FEAT_TREE);
+		if (! randint0(FOREST_DENSITY))
+		{
+			cave_set_feat(y, x, FEAT_GRASS);
+		}
+		else
+		{
+		    /* Create trees */
+		    if (randint1(p_ptr->depth + HIGHLAND_TREE_CHANCE)
+			> HIGHLAND_TREE_CHANCE)
+			cave_set_feat(y, x, FEAT_TREE2);
+		    else
+			cave_set_feat(y, x, FEAT_TREE);
+		}
 	}
     }
 
