@@ -718,7 +718,15 @@ void plural_aux(char *name, size_t max)
 {
 	int name_len = strlen(name);
 
-	if (strstr(name, " of "))
+	if (strstr(name, "Child of"))
+	{
+		char dummy[80];
+		strcpy (dummy, "Children of");
+		my_strcat (dummy, &(name[8]), sizeof(dummy));
+		my_strcpy (name, dummy, max);
+		return;
+	}
+	else if (strstr(name, " of "))
 	{
 		char *aider = strstr(name, " of ");
 		char dummy[80];
