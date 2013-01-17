@@ -52,7 +52,7 @@ endif
 
 CC = $(CROSS)gcc
 WRES = $(CROSS)windres
-WARNINGS = -Wall -Wextra -Wno-unused-parameter -Wno-missing-field-initializers
+WARNINGS = -Wall -Wextra -Wno-unused-parameter
 CFLAGS += $(WARNINGS) -std=c99 -Wdeclaration-after-statement -O2 -I.
 
 ifdef BUILD_ID
